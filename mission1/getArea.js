@@ -4,12 +4,8 @@ function getArea(figure, ...number) {
   if (figure === "circle") {
     area = number[0] * number[0] * Math.PI;
 
-    let i;
-
-    i = 1;
-    while (i < number[1]) {
+    for (let i = 1; i < number[1]; i++) {
       area += (number[0] + i) * (number[0] + i) * Math.PI;
-      i++;
     }
   }
   if (figure === "rect") {
