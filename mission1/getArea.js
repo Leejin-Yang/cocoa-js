@@ -1,3 +1,5 @@
+const arr = [];
+
 function getCircle(radius, number) {
   let area;
 
@@ -22,15 +24,27 @@ function getTrapezoid(shortBase, longBase, height) {
   return area;
 }
 
-function getArea(figure, ...number) {
+function saveExecutionSequence(figure) {
+  arr.push(figure);
+}
+
+function getArea(figure, ...params) {
+  saveExecutionSequence(figure);
+
   if (figure === "circle") {
-    return getCircle(number[0], number[1]);
+    return getCircle(params[0], params[1]);
   }
   if (figure === "rect") {
-    return getRectangle(number[0], number[1]);
+    return getRectangle(params[0], params[1]);
   }
   if (figure === "trapezoid") {
-    return getTrapezoid(number[0], number[1], number[2]);
+    return getTrapezoid(params[0], params[1], params[2]);
+  }
+}
+
+function printExecutionSequence() {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
   }
 }
 
@@ -38,3 +52,4 @@ console.log(getArea("circle", 10));
 console.log(getArea("circle", 10, 2));
 console.log(getArea("rect", 10, 15));
 console.log(getArea("trapezoid", 10, 15, 12));
+printExecutionSequence();
