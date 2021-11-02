@@ -1,4 +1,5 @@
-const arr = [];
+const logArr = [];
+const areaArr = [];
 
 function getCircle(radius, number) {
   let area;
@@ -24,27 +25,30 @@ function getTrapezoid(shortBase, longBase, height) {
   return area;
 }
 
-function saveExecutionSequence(figure) {
-  arr.push(figure);
+function saveExecutionSequence(key, value) {
+  logArr.push(key);
+  areaArr.push(value);
 }
 
 function getArea(figure, ...params) {
-  saveExecutionSequence(figure);
+  let area;
 
   if (figure === "circle") {
-    return getCircle(params[0], params[1]);
+    area = getCircle(...params);
   }
   if (figure === "rect") {
-    return getRectangle(params[0], params[1]);
+    area = getRectangle(...params);
   }
   if (figure === "trapezoid") {
-    return getTrapezoid(params[0], params[1], params[2]);
+    area = getTrapezoid(...params);
   }
+  saveExecutionSequence(figure, area);
+  return area;
 }
 
 function printExecutionSequence() {
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+  for (let i = 0; i < logArr.length; i++) {
+    console.log(`${logArr[i]}: ${areaArr[i]}`);
   }
 }
 
