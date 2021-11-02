@@ -1,20 +1,37 @@
-function getArea(figure, ...number) {
+function getCircle(radius, number) {
   let area;
 
-  if (figure === "circle") {
-    area = number[0] * number[0] * Math.PI;
-
-    for (let i = 1; i < number[1]; i++) {
-      area += (number[0] + i) * (number[0] + i) * Math.PI;
-    }
-  }
-  if (figure === "rect") {
-    area = number[0] * number[1];
-  }
-  if (figure === "trapezoid") {
-    area = (number[0] + number[1]) * number[2] * 0.5;
+  area = Math.pow(radius, 2) * Math.PI;
+  for (let i = 1; i < number; i++) {
+    area += Math.pow(radius + i, 2) * Math.PI;
   }
   return area;
+}
+
+function getRectangle(width, height) {
+  let area;
+
+  area = width * height;
+  return area;
+}
+
+function getTrapezoid(shortBase, longBase, height) {
+  let area;
+
+  area = (shortBase + longBase) * height * 0.5;
+  return area;
+}
+
+function getArea(figure, ...number) {
+  if (figure === "circle") {
+    return getCircle(number[0], number[1]);
+  }
+  if (figure === "rect") {
+    return getRectangle(number[0], number[1]);
+  }
+  if (figure === "trapezoid") {
+    return getTrapezoid(number[0], number[1], number[2]);
+  }
 }
 
 console.log(getArea("circle", 10));
