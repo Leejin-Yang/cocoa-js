@@ -1,3 +1,11 @@
+/*
+TO DO
+
+고차 함수를 이용한 풀이
+예외 처리
+객체 생성
+*/
+
 function solution(base, number, totalPlayer) {
   let valueBase;
   const numArr = [];
@@ -15,6 +23,10 @@ function getNumberToSay(base, number, totalPlayer, orderNum) {
   const orderNumArr = [];
   const numArr = solution(base, number, totalPlayer);
 
+  if (orderNum > totalPlayer) {
+    return "error";
+  }
+
   while (index < numArr.length) {
     orderNumArr.push(numArr[index]);
     index += totalPlayer;
@@ -23,8 +35,9 @@ function getNumberToSay(base, number, totalPlayer, orderNum) {
 }
 
 function testCase() {
-  console.log(solution(3, 4, 2));
-  console.log(getNumberToSay(3, 4, 2, 1));
+  console.log(solution(2, 4, 2));
+  console.log(getNumberToSay(2, 4, 2, 1));
+  console.log(getNumberToSay(2, 4, 2, 3));
 }
 
 testCase();
