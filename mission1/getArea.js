@@ -1,33 +1,27 @@
 const logArr = [];
-const areaArr = [];
 
 function getCircle(radius, number = 1) {
-  let area;
+  let area = 0;
+  const PI = Math.PI;
 
-  area = 0;
   for (let i = 0; i < number; i++) {
-    area += Math.pow(radius + i, 2) * Math.PI;
+    area += (radius + i) * (radius + i) * PI;
   }
-  return area;
+  return area.toFixed(2);
 }
 
 function getRectangle(width, height) {
-  let area;
-
-  area = width * height;
+  const area = width * height;
   return area;
 }
 
 function getTrapezoid(shortBase, longBase, height) {
-  let area;
-
-  area = (shortBase + longBase) * height * 0.5;
+  const area = (shortBase + longBase) * height * 0.5;
   return area;
 }
 
 function saveExecution(key, value) {
-  logArr.push(key);
-  areaArr.push(value);
+  logArr.push(`${key}: ${value}`);
 }
 
 function getArea(figure, ...params) {
@@ -47,13 +41,17 @@ function getArea(figure, ...params) {
 }
 
 function printExecutionSequence() {
-  for (let i = 0; i < logArr.length; i++) {
-    console.log(`${logArr[i]}: ${areaArr[i]}`);
-  }
+  const sequence = logArr.join("\n");
+  console.log("계산수행순서");
+  console.log(sequence);
 }
 
-console.log(getArea("circle", 10));
-console.log(getArea("circle", 10, 2));
-console.log(getArea("rect", 10, 15));
-console.log(getArea("trapezoid", 10, 15, 12));
-printExecutionSequence();
+function test() {
+  getArea("circle", 10);
+  getArea("circle", 10, 2);
+  getArea("rect", 10, 15);
+  getArea("trapezoid", 10, 15, 12);
+  printExecutionSequence();
+}
+
+test();
