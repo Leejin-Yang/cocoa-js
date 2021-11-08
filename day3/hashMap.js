@@ -1,9 +1,10 @@
 function convertHashStringToInt(key, tableSize) {
-  let hashCode = 17;
+  let hashCode = 13;
 
   for (let i = 0; i < key.length; i++) {
     hashCode = (hashCode * key.charCodeAt(i)) % tableSize;
   }
+  console.log(hashCode);
   return hashCode;
 }
 
@@ -33,3 +34,4 @@ function HashMap() {
 const myTable = new HashMap();
 myTable.put("firstname", "tom");
 console.log(myTable.get("firstname"));
+console.log(myTable.get("melonaeeerqe"));
