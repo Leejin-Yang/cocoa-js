@@ -9,8 +9,6 @@
 
 ## Breakpoints
 
----
-
 소프트웨어 개발에서 프로그램을 의도적으로 잠시 또는 아예 멈추게 하는 장소를 가리킨다.
 
 이미 실행중인 프로그램에 대한 정보를 알아내기 위한 수단으로 사용.
@@ -24,8 +22,6 @@ breakpoint를 설정하고 디버깅하면 break된 상황에 local, global vari
 <br>
 
 ## Watch
-
----
 
 코드의 실행에 따른 여러 개의 변수 또는 표현식의 값을 표시.
 
@@ -41,8 +37,6 @@ Watch 섹션의 빈 공간을 더블클릭 하거나 우측 상단의 `+` 버튼
 
 ## Call Stack
 
----
-
 프로그램이 함수 호출을 추적할 때 사용.
 
 각 function call 당 하나씩의 스택들로 이루어져 있다.
@@ -51,7 +45,7 @@ Watch 섹션의 빈 공간을 더블클릭 하거나 우측 상단의 `+` 버튼
 
 스크립트에서 함수가 실행되면 함수를 추가하고 끝나면 콜스택에서 제거.
 
-얘시)
+예시)
 
 ```jsx
 function firstFunc() {
@@ -93,8 +87,6 @@ firstFunc() 호출하고 콜 스택으로 가게 된다.
 
 ## Step over / Step into / Step out
 
----
-
 Step over: breakpoint 다음 라인을 실행. 함수가 있어도 실행 후 다음으로 넘어간다
 
 Step into: step over와 마찬가지로 breakpoint 다음 라인을 실행. 다음 라인이 함수일 경우 함수 내부로 들어간다.
@@ -104,8 +96,6 @@ Step out: 함수를 끝까지 실행하고 호출시킨 곳으로 되돌아간�
 <br>
 
 ## Reference
-
----
 
 [https://ko.wikipedia.org/wiki/브레이크포인트](https://ko.wikipedia.org/wiki/%EB%B8%8C%EB%A0%88%EC%9D%B4%ED%81%AC%ED%8F%AC%EC%9D%B8%ED%8A%B8)
 
