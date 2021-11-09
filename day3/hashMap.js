@@ -9,10 +9,14 @@ function convertHashStringToInt(key, tableSize) {
 
 function HashMap() {
   this.table = new Array(13);
+  const tableSize = this.table.length;
+
+  function predicate(key) {
+    return (item) => item[0] === key;
+  }
 
   HashMap.prototype.put = function (key, value) {
-    const index = convertHashStringToInt(key, this.table.length);
-    console.log(index);
+    const index = convertHashStringToInt(key, tableSize);
     if (this.table[index]) {
       this.table[index].push([key, value]);
     } else {
@@ -21,21 +25,18 @@ function HashMap() {
   };
 
   HashMap.prototype.remove = function (key) {
-    const index = convertHashStringToInt(key, this.table.length);
-    this.table[index].splice(
-      this.table[index].findIndex((data) => data[0] === key),
-      1
-    );
+    const index = convertHashStringToInt(key, tableSize);
+    this.table[index].splice(this.table[index].findIndex(predicate(key), 1));
   };
 
-  HashMap.prototype.containKey = function () {};
+  HashMap.prototype.containKey = function (key) {};
 
   HashMap.prototype.get = function (key) {
-    const index = convertHashStringToInt(key, this.table.length);
+    const index = convertHashStringToInt(key, tableSize);
     if (!this.table[index]) {
       return null;
     }
-    return this.table[index].find((data) => data[0] === key)[1];
+    return this.table[index].find(predicate(key))[1];
   };
 
   HashMap.prototype.isEmpty = function () {};
@@ -61,6 +62,6 @@ console.log(myTable.get("firstname"));
 console.log(myTable.get("lastname"));
 console.log(myTable.get("age"));
 console.table(myTable.table);
-myTable.remove("012");
+myTable.remove("firstname");
 console.table(myTable.table);
 console.log(myTable.keys());
