@@ -1,5 +1,5 @@
 function convertHashStringToInt(key, tableSize) {
-  let hashCode = 13;
+  let hashCode = 1;
 
   for (let i = 0; i < key.length; i++) {
     hashCode = (hashCode * key.charCodeAt(i)) % tableSize;
@@ -8,7 +8,7 @@ function convertHashStringToInt(key, tableSize) {
 }
 
 function HashMap() {
-  this.table = new Array(17);
+  this.table = new Array(13);
 
   HashMap.prototype.put = function (key, value) {
     const index = convertHashStringToInt(key, this.table.length);
@@ -22,7 +22,8 @@ function HashMap() {
 
   HashMap.prototype.remove = function (key) {
     const index = convertHashStringToInt(key, this.table.length);
-    this.table[index].find((data) => data[0] === key).pop();
+    const data = this.table[index].find((data) => data[0] === key);
+    this.table[index].splice(this.table[index].indexOf(data), 1);
   };
 
   HashMap.prototype.containKey = function () {};
@@ -38,7 +39,7 @@ function HashMap() {
   HashMap.prototype.isEmpty = function () {};
 
   HashMap.prototype.keys = function () {
-    let keys = [];
+    const keys = [];
     for (const index in this.table) {
       this.table[index].forEach(([key]) => keys.push(key));
     }
@@ -53,11 +54,11 @@ function HashMap() {
 const myTable = new HashMap();
 myTable.put("firstname", "tom");
 myTable.put("lastname", "yang");
-myTable.put("0123", "foo");
+myTable.put("012", "foo");
 console.log(myTable.get("firstname"));
 console.log(myTable.get("lastname"));
 console.log(myTable.get("age"));
-console.log(myTable.table);
+console.table(myTable.table);
 myTable.remove("firstname");
-console.log(myTable.table);
+console.table(myTable.table);
 console.log(myTable.keys());
