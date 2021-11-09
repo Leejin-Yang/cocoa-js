@@ -26,7 +26,8 @@ function HashMap() {
 
   HashMap.prototype.remove = function (key) {
     const index = convertHashStringToInt(key, tableSize);
-    this.table[index].splice(this.table[index].findIndex(predicate(key)), 1);
+    const itemIndex = this.table[index].findIndex(predicate(key));
+    this.table[index].splice(itemIndex, 1);
   };
 
   HashMap.prototype.containKey = function (key) {
@@ -39,10 +40,13 @@ function HashMap() {
     if (!this.table[index]) {
       return null;
     }
-    return this.table[index].find(predicate(key))[1];
+    const value = this.table[index].find(predicate(key))[1];
+    return value;
   };
 
-  HashMap.prototype.isEmpty = function () {};
+  HashMap.prototype.isEmpty = function () {
+    return Boolean(!this.size());
+  };
 
   HashMap.prototype.keys = function () {
     const keys = [];
@@ -73,24 +77,27 @@ function HashMap() {
 
 const myTable = new HashMap();
 console.log(myTable);
+console.log(myTable.isEmpty());
 myTable.put("firstname", "tom");
 myTable.put("lastname", "yang");
 myTable.put("012", "foo");
-console.log(myTable.get("firstname"));
-console.log(myTable.get("lastname"));
-console.log(myTable.get("age"));
-console.log(myTable.containKey("firstname"));
-console.table(myTable.table);
-console.log(myTable.size());
-myTable.replace("firstname", "leejin");
-console.log(myTable.get("firstname"));
-console.table(myTable);
-
-myTable.remove("lastname");
-console.table(myTable.table);
-console.log(myTable.keys());
-console.log(myTable.containKey("firstname"));
-console.log(myTable.size());
-
-myTable.clear();
 console.log(myTable);
+console.log(myTable.isEmpty());
+// console.log(myTable.get("firstname"));
+// console.log(myTable.get("lastname"));
+// console.log(myTable.get("age"));
+// console.log(myTable.containKey("firstname"));
+// console.table(myTable.table);
+// console.log(myTable.size());
+// myTable.replace("firstname", "leejin");
+// console.log(myTable.get("firstname"));
+// console.table(myTable);
+
+// myTable.remove("lastname");
+// console.table(myTable.table);
+// console.log(myTable.keys());
+// console.log(myTable.containKey("firstname"));
+// console.log(myTable.size());
+
+// myTable.clear();
+// console.log(myTable);
