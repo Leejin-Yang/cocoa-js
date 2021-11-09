@@ -53,7 +53,15 @@ function HashMap() {
   };
 
   HashMap.prototype.replace = function () {};
-  HashMap.prototype.size = function () {};
+
+  HashMap.prototype.size = function () {
+    let size = 0;
+    for (const index in this.table) {
+      size += this.table[index].length;
+    }
+    return size;
+  };
+
   HashMap.prototype.clear = function () {};
 }
 
@@ -66,7 +74,10 @@ console.log(myTable.get("lastname"));
 console.log(myTable.get("age"));
 console.log(myTable.containKey("firstname"));
 console.table(myTable.table);
+console.log(myTable.size());
+
 myTable.remove("firstname");
 console.table(myTable.table);
 console.log(myTable.keys());
 console.log(myTable.containKey("firstname"));
+console.log(myTable.size());
