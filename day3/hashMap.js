@@ -62,10 +62,14 @@ function HashMap() {
     return size;
   };
 
-  HashMap.prototype.clear = function () {};
+  HashMap.prototype.clear = function () {
+    this.table.splice(0, tableSize);
+    this.table = new Array(tableSize);
+  };
 }
 
 const myTable = new HashMap();
+console.log(myTable);
 myTable.put("firstname", "tom");
 myTable.put("lastname", "yang");
 myTable.put("012", "foo");
@@ -81,3 +85,6 @@ console.table(myTable.table);
 console.log(myTable.keys());
 console.log(myTable.containKey("firstname"));
 console.log(myTable.size());
+
+myTable.clear();
+console.log(myTable);
