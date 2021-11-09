@@ -26,7 +26,7 @@ function HashMap() {
 
   HashMap.prototype.remove = function (key) {
     const index = convertHashStringToInt(key, tableSize);
-    this.table[index].splice(this.table[index].findIndex(predicate(key), 1));
+    this.table[index].splice(this.table[index].findIndex(predicate(key)), 1);
   };
 
   HashMap.prototype.containKey = function (key) {
@@ -52,7 +52,10 @@ function HashMap() {
     return keys;
   };
 
-  HashMap.prototype.replace = function () {};
+  HashMap.prototype.replace = function (key, value) {
+    const index = convertHashStringToInt(key, tableSize);
+    this.table[index].find(predicate(key))[1] = value;
+  };
 
   HashMap.prototype.size = function () {
     let size = 0;
@@ -79,8 +82,11 @@ console.log(myTable.get("age"));
 console.log(myTable.containKey("firstname"));
 console.table(myTable.table);
 console.log(myTable.size());
+myTable.replace("firstname", "leejin");
+console.log(myTable.get("firstname"));
+console.table(myTable);
 
-myTable.remove("firstname");
+myTable.remove("lastname");
 console.table(myTable.table);
 console.log(myTable.keys());
 console.log(myTable.containKey("firstname"));
