@@ -29,7 +29,10 @@ function HashMap() {
     this.table[index].splice(this.table[index].findIndex(predicate(key), 1));
   };
 
-  HashMap.prototype.containKey = function (key) {};
+  HashMap.prototype.containKey = function (key) {
+    const keys = this.keys();
+    return keys.includes(key);
+  };
 
   HashMap.prototype.get = function (key) {
     const index = convertHashStringToInt(key, tableSize);
@@ -61,7 +64,9 @@ myTable.put("012", "foo");
 console.log(myTable.get("firstname"));
 console.log(myTable.get("lastname"));
 console.log(myTable.get("age"));
+console.log(myTable.containKey("firstname"));
 console.table(myTable.table);
 myTable.remove("firstname");
 console.table(myTable.table);
 console.log(myTable.keys());
+console.log(myTable.containKey("firstname"));
