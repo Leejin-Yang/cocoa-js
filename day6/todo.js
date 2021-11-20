@@ -5,9 +5,9 @@
     4. 삭제 기능
 */
 
-const toDoList = document.querySelector(".to_do_list");
-const input = document.querySelector(".task_input");
-const toDoForm = document.querySelector(".my_form");
+const toDoList = document.querySelector(".to-do-list");
+const input = document.querySelector(".to-do-form__input");
+const toDoForm = document.querySelector(".to-do-form");
 
 function createCheckBox() {
   const checkBox = document.createElement("input");
@@ -29,15 +29,12 @@ function createDeleteButton() {
 }
 
 function deleteToDo(event) {
-  const toDo = event.target;
-  toDo.parentNode.remove();
+  const toDo = event.target.parentNode;
+  toDo.remove();
 }
 
 function addToDo(text) {
-  if (text === "") {
-    alert("할 일을 정하자!");
-    return;
-  }
+  if (text === "") return alert("할 일을 정하자!");
 
   const li = document.createElement("li");
   const checkBox = createCheckBox();

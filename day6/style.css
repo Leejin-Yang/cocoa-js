@@ -32,7 +32,7 @@ header {
   text-align: center;
 }
 
-header > h1 {
+header h1 {
   font-size: 2rem;
 }
 
@@ -42,40 +42,47 @@ header > h1 {
   margin: 2rem auto 0;
 }
 
-.title > h2 {
+.title h2 {
   font-size: 1.5rem;
 }
 
-.my_form {
+.to-do-form {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  max-width: 1200px;
+  max-width: 600px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  box-shadow: 0px 6px 6px var(--color-border);
 }
 
-.my_form > .task_input {
+.to-do-form__input {
   width: 540px;
   height: 30px;
-  margin-right: 1rem;
   padding-left: 0.5rem;
+  border: none;
 }
 
-.my_form > .task_add_button {
+.to-do-form__input:focus {
+  border: none;
+}
+
+.to-do-form__add-button {
+  width: 60px;
+  height: 30px;
+  padding: 0.5rem;
+
   background-color: var(--color-orange-200);
   color: var(--color-white);
   border: none;
-  padding: 0.5rem;
 }
 
-.my_form > .task_add_button:hover {
+.to-do-form__add-button:hover {
   background-color: var(--color-orange-300);
   cursor: pointer;
 }
 
-.to_do_list {
+.to-do-list {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,7 +91,7 @@ header > h1 {
   list-style: none;
 }
 
-.to_do_list > li {
+.to-do-list > li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -97,13 +104,13 @@ header > h1 {
   border: 1px solid var(--color-border);
 }
 
-.to_do_list > li > button {
+.to-do-list > li > button {
   font-size: 0.5rem;
   background: none;
   border: none;
 }
 
-.to_do_list > li > input,
-.to_do_list > li > button:hover {
+.to-do-list > li > input,
+.to-do-list > li > button:hover {
   cursor: pointer;
 }
